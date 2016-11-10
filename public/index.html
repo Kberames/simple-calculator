@@ -4,12 +4,28 @@
         <meta charset="utf-8">
         <title>Simple Calculator</title>
     </head>
-    <body>
+    <body ng-app="App">
         <h1>Simple Calculator</h1>
-        
+        <nav>
+            <a href="/#/">Home</a>
+            <a href="/#/about">About</a>
+            <a href="/#/contact">Contact</a>
+            <a href="/#/calculator">Calculator</a>
+        </nav>
+
+        <!-- Set the area for the angular ui router to render to -->
+        <div ui-view></div>
+
         <!-- Include all of my angular code -->
         <script src="/lib/angular/angular.js"></script>
         <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+        <!-- Include my script -->
+        <script src="/js/App.js"></script>
+        <script src="/js/HomeController.js"></script>
+        <script src="/js/AboutController.js"></script>
+        <script src="/js/ContactController.js"></script>
+        <script src="/js/CalculatorController.js"></script>
 
     </body>
 </html>
