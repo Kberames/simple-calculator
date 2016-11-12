@@ -12,6 +12,7 @@ namespace App {
         private action;
         private answer;
         private solved = false;
+        private operatorChosen = false;
 
 /*
         enum Actions {
@@ -21,10 +22,10 @@ namespace App {
             div
         }
 */
-        private  Add = 0;
-        private  Sub = 1;
-        private  Mult = 2;
-        private  Div = 3;
+        static  Add = 0;
+        static  Sub = 1;
+        static  Mult = 2;
+        static  Div = 3;
 
 
         constructor () {
@@ -163,40 +164,59 @@ namespace App {
         public solveEquation (){
             console.log("solveEquation fired");
 
+            let error = false;
+
             this.input2 = parseInt(this.displayWindow);
 
             this.displayWindow = "";
 
-            if (this.action == this.Add) {
+            if (this.action == CalculatorController.Add) {
                 this.answer = this.input1 + this.input2;
             }
-            else if (this.action == this.Sub) {
+            else if (this.action == CalculatorController.Sub) {
                 this.answer = this.input1 - this.input2;
             }
-            else if (this.action == this.Mult) {
+            else if (this.action == CalculatorController.Mult) {
                 this.answer = this.input1 * this.input2;
             }
-            else if (this.action == this.Div) {
+            else if (this.action == CalculatorController.Div) {
+
                 if (this.input2 == 0){
-                    this.displayWindow = 'Cannot divide by zero';
+                    console.log ("Error: divide by zero attempted.");
+
+                    error = true;
                 }
                 else {
                     this.answer = this.input1 / this.input2;
                 }
             }
 
-            this.displayWindow = this.answer;
+            if (error) {
+                this.displayWindow = 'Cannot divide by zero';
+            }
+            else {
+                this.displayWindow = this.answer;
+            }
+
             this.solved = true;
+            this.operatorChosen = false;
 
         }
 
         public add (){
             console.log("add fired");
 
-            this.input1 = parseInt(this.displayWindow);
+            if (this.operatorChosen) {
+                this.input2 = parseInt(this.displayWindow);
+                this.input1 += this.input2;
+            }
+            else {
+                this.input1 = parseInt(this.displayWindow);
+            }
             this.displayWindow = " ";
 
-            this.action = this.Add;
+            this.action = CalculatorController.Add;
+            this.operatorChosen = true;
         }
 
         public subtract (){
@@ -204,7 +224,7 @@ namespace App {
             this.input1 = parseInt(this.displayWindow);
             this.displayWindow = " ";
 
-            this.action = this.Sub;
+            this.action = CalculatorController.Sub;
         }
 
         public multiply (){
@@ -212,7 +232,7 @@ namespace App {
             this.input1 = parseInt(this.displayWindow);
             this.displayWindow = " ";
 
-            this.action = this.Mult;
+            this.action = CalculatorController.Mult;
         }
 
         public divide (){
@@ -220,7 +240,7 @@ namespace App {
             this.input1 = parseInt(this.displayWindow);
             this.displayWindow = " ";
 
-            this.action = this.Div;
+            this.action = CalculatorController.Div;
         }
 
     }
