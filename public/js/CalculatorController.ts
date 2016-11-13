@@ -14,14 +14,6 @@ namespace App {
         private solved = false;
         private operatorChosen = false;
 
-/*
-        enum Actions {
-            add,
-            sub,
-            mult,
-            div
-        }
-*/
         static  Add = 0;
         static  Sub = 1;
         static  Mult = 2;
@@ -33,142 +25,46 @@ namespace App {
             this.displayWindow = '';
         }
 
-        public selectNum1 (){
-            console.log("selectNum1 fired");
+        public selectNum (num){
+            console.log("selectNum fired for " + num);
 
             if (this.solved) {
-                this.displayWindow = "1";
+                this.displayWindow = num;
             }
             else {
-                this.displayWindow += "1";
+                this.displayWindow += String(num);
             }
             this.solved = false;
         }
 
-        public selectNum2 (){
-            console.log("selectNum2 fired");
+        public operator (operation){
+            console.log("operator fired for " + operation);
 
-            if (this.solved) {
-                this.displayWindow = "2";
+            if (this.operatorChosen) {
+                this.doMath();
+                this.input1 = this.answer;
             }
             else {
-                this.displayWindow += "2";
+                this.input1 = parseInt(this.displayWindow);
             }
-            this.solved = false;
+            this.displayWindow = " ";
 
-        }
-
-        public selectNum3 (){
-            console.log("selectNum3 fired");
-
-            if (this.solved) {
-                this.displayWindow = "3";
-            }
-            else {
-                this.displayWindow += "3";
-            }
-            this.solved = false;
-        }
-
-        public selectNum4 (){
-            console.log("selectNum4 fired");
-
-            if (this.solved) {
-                this.displayWindow = "4";
-            }
-            else {
-                this.displayWindow += "4";
-            }
-            this.solved = false;
-
-        }
-
-        public selectNum5 (){
-            console.log("selectNum5 fired");
-
-            if (this.solved) {
-                this.displayWindow = "5";
-            }
-            else {
-                this.displayWindow += "5";
-            }
-            this.solved = false;
-        }
-
-        public selectNum6 (){
-            console.log("selectNum6 fired");
-
-            if (this.solved) {
-                this.displayWindow = "6";
-            }
-            else {
-                this.displayWindow += "6";
-            }
-            this.solved = false;
-        }
-
-        public selectNum7 (){
-            console.log("selectNum7 fired");
-
-            if (this.solved) {
-                this.displayWindow = "7";
-            }
-            else {
-                this.displayWindow += "7";
-            }
-            this.solved = false;
-        }
-
-        public selectNum8 (){
-            console.log("selectNum8 fired");
-
-            if (this.solved) {
-                this.displayWindow = "8";
-            }
-            else {
-                this.displayWindow += "8";
-            }
-            this.solved = false;
-        }
-
-        public selectNum9 (){
-            console.log("selectNum9 fired");
-
-            if (this.solved) {
-                this.displayWindow = "9";
-            }
-            else {
-                this.displayWindow += "9";
-            }
-            this.solved = false;
-        }
-
-        public selectNum0 (){
-            console.log("selectNum0 fired");
-
-            if (this.solved) {
-                this.displayWindow = "0";
-            }
-            else {
-                this.displayWindow += "0";
-            }
-            this.solved = false;
+            this.action = operation;
+            this.operatorChosen = true;
         }
 
         public clearDisplay (){
             console.log("clearDisplay fired");
 
             this.displayWindow = "";
+            this.operatorChosen = false;
+            this.solved = false;
         }
 
-        public solveEquation (){
-            console.log("solveEquation fired");
-
+        public doMath () {
             let error = false;
 
             this.input2 = parseInt(this.displayWindow);
-
-            this.displayWindow = "";
 
             if (this.action == CalculatorController.Add) {
                 this.answer = this.input1 + this.input2;
@@ -198,52 +94,16 @@ namespace App {
                 this.displayWindow = this.answer;
             }
 
+        }
+
+        public solveEquation (){
+            console.log("solveEquation fired");
+
+            this.doMath();
+
             this.solved = true;
             this.operatorChosen = false;
 
         }
-
-        public add (){
-            console.log("add fired");
-
-            if (this.operatorChosen) {
-                this.input2 = parseInt(this.displayWindow);
-                this.input1 += this.input2;
-            }
-            else {
-                this.input1 = parseInt(this.displayWindow);
-            }
-            this.displayWindow = " ";
-
-            this.action = CalculatorController.Add;
-            this.operatorChosen = true;
-        }
-
-        public subtract (){
-            console.log("subtract fired");
-            this.input1 = parseInt(this.displayWindow);
-            this.displayWindow = " ";
-
-            this.action = CalculatorController.Sub;
-        }
-
-        public multiply (){
-            console.log("multiply fired");
-            this.input1 = parseInt(this.displayWindow);
-            this.displayWindow = " ";
-
-            this.action = CalculatorController.Mult;
-        }
-
-        public divide (){
-            console.log("divide fired");
-            this.input1 = parseInt(this.displayWindow);
-            this.displayWindow = " ";
-
-            this.action = CalculatorController.Div;
-        }
-
     }
-
-
 }

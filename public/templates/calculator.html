@@ -3,25 +3,25 @@
 
 
 <div id="dspWin" width ="100px" height="20px"> {{ calculatorController.displayWindow }} </div>
-<button ng-click="calculatorController.selectNum1()">1</button>
-<button ng-click="calculatorController.selectNum2()">2</button>
-<button ng-click="calculatorController.selectNum3()">3</button>
-<button ng-click="calculatorController.selectNum0()">0</button>
+<button ng-click="calculatorController.selectNum(1)">1</button>
+<button ng-click="calculatorController.selectNum(2)">2</button>
+<button ng-click="calculatorController.selectNum(3)">3</button>
+<button ng-click="calculatorController.selectNum(0)">0</button>
 </br>
-<button ng-click="calculatorController.selectNum4()">4</button>
-<button ng-click="calculatorController.selectNum5()">5</button>
-<button ng-click="calculatorController.selectNum6()">6</button>
+<button ng-click="calculatorController.selectNum(4)">4</button>
+<button ng-click="calculatorController.selectNum(5)">5</button>
+<button ng-click="calculatorController.selectNum(6)">6</button>
 <button ng-click="calculatorController.clearDisplay()">cl</button>
 </br>
-<button ng-click="calculatorController.selectNum7()">7</button>
-<button ng-click="calculatorController.selectNum8()">8</button>
-<button ng-click="calculatorController.selectNum9()">9</button>
+<button ng-click="calculatorController.selectNum(7)">7</button>
+<button ng-click="calculatorController.selectNum(8)">8</button>
+<button ng-click="calculatorController.selectNum(9)">9</button>
 <button ng-click="calculatorController.solveEquation()">=</button>
 </br>
-<button ng-click="calculatorController.add()">+</button>
-<button ng-click="calculatorController.subtract()">-</button>
-<button ng-click="calculatorController.multiply()">*</button>
-<button ng-click="calculatorController.divide()">/</button>
+<button ng-click="calculatorController.operator(0)">+</button>
+<button ng-click="calculatorController.operator(1)">-</button>
+<button ng-click="calculatorController.operator(2)">*</button>
+<button ng-click="calculatorController.operator(3)">/</button>
 
 <!-- Bind the scope's "title" variable as the
 data model of this input tag. -->
