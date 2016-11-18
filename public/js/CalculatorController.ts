@@ -23,6 +23,7 @@ namespace App {
         constructor () {
             this.title = 'Calculator Page';
             this.displayWindow = '';
+            this.DisableOperators();
         }
 
         public selectNum (num){
@@ -35,6 +36,7 @@ namespace App {
                 this.displayWindow += String(num);
             }
             this.solved = false;
+            this.EnableOperators();
         }
 
         public operator (operation){
@@ -51,6 +53,7 @@ namespace App {
 
             this.action = operation;
             this.operatorChosen = true;
+            this.DisableOperators();
         }
 
         public clearDisplay (){
@@ -89,10 +92,12 @@ namespace App {
 
             if (error) {
                 this.displayWindow = 'Cannot divide by zero';
+                this.DisableOperators();
             }
             else {
                 this.displayWindow = this.answer;
             }
+            
 
         }
 
@@ -104,6 +109,20 @@ namespace App {
             this.solved = true;
             this.operatorChosen = false;
 
+        }
+
+        public DisableOperators (){
+            let buttons = document.getElementsByClassName("operator");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+            }
+        }
+
+        public EnableOperators (){
+            let buttons = document.getElementsByClassName("operator");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = false;
+            }
         }
     }
 }
